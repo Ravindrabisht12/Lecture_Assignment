@@ -2,13 +2,16 @@ package org.LLD1.Concurrency1ProcessesAndThreads;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Working fine");
-
-
         /*
           We have two option to create threads
           1. Using Thread class
           2. Using Runnable interface -> Preferred method
+
+          Why Runnable interface preferred?
+          - Runnable represents what to do (the task).
+          - Thread represents how to run it (the execution mechanism).
+          - By using Runnable, you keep your task logic separate from the thread implementation — makes your code more flexible.
+          - You have option to extend another useful parent class eg. class NewThread extends SomeOtherClass implements Runnable
          */
 
 
