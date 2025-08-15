@@ -1,8 +1,8 @@
 package org.LLD1.Collections;
 
 public class Clothing extends Item{
-    private int size;
-    public Clothing(int id, String name, int price, int quantity, int size) {
+    private String size;
+    public Clothing(String id, String name, double price, int quantity, String size) {
         super(id, name, price, quantity);
         this.size = size;
     }
