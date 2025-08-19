@@ -24,14 +24,17 @@ public class Inventory<T extends Item>{
         items.put(item.getId(), item);
     }
 
+    // Remove item
     public void removeItem(String id){
         items.remove(id);
     }
 
+    // Get item
     public T getItem(String id){
         return items.get(id);
     }
 
+    // Get all items
     public List<T> getItems(){
         return new ArrayList<>(items.values());
     }
