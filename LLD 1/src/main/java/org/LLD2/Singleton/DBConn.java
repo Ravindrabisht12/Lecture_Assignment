@@ -45,6 +45,7 @@ public class DBConn {
 
     /**
      * A2.
+     * Lazy Initialized Singleton
      * Not suitable for multi-threaded environment
      * @return
      */
@@ -57,7 +58,7 @@ public class DBConn {
 
     /**
      * A3.
-     * Lazy loading with synchronized method
+     * Synchronized method
      * Suitable for single-threaded environment
      * @return
      */
