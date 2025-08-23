@@ -4,50 +4,35 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
+ * Design Patterns:
+ * A design pattern is a proven, reusable solution to a common software design problem.
+ * Patterns provide templates for solving recurring design challenges in a given context.
  *
- * What is Design pattern?
- * A design pattern is a reusable solution to a common problem in software design.
- * It is a general repeatable solution that can be applied to a specific problem in a given context.
+ * Singleton Design Pattern:
+ * Ensures a class has only one instance and provides a global point of access to it.
  *
- *
- * What is Singleton Design Pattern?
- * The Singleton Design Pattern is a design pattern that restricts the instantiation of a class
- * to a single instance and provides a global point of access to that instance.
- *
- *
- * Type of design patterns:
- * 1. Creational Design Patterns: Deal with object creation mechanisms, trying to create
- *    objects in a manner suitable to the situation. Examples: Singleton, Factory, Abstract
- *    Factory, Builder, Prototype.
- * 2. Structural Design Patterns: Deal with object composition or structure,
- *    simplifying the design by identifying a simple way to realize relationships
- *    between entities. Examples: Adapter, Composite, Proxy, Flyweight, Facade, Bridge,
- *    Decorator.
- * 3. Behavioral Design Patterns: Deal with object interaction and responsibility,
- *    focusing on communication between objects. Examples: Observer, Strategy, Command,
- *    Iterator, Mediator, Memento, State, Template Method, Visitor.
+ * Types of Design Patterns:
+ * 1. Creational: Object creation mechanisms (Singleton, Factory, Abstract Factory, Builder, Prototype)
+ * 2. Structural: Object composition/structure (Adapter, Composite, Proxy, Flyweight, Facade, Bridge, Decorator)
+ * 3. Behavioral: Object interaction/responsibility (Observer, Strategy, Command, Iterator, Mediator, Memento, State, Template Method, Visitor)
  */
-
 
 public class DBConn {
     private static volatile DBConn INSTANCE = null;
     private static final Lock lock = new ReentrantLock();
 
     private DBConn() {
-        // private constructor to prevent instantiation
+        // Prevent external instantiation
     }
 
-    // A1.
-    // Eager initialization -> Initialized on load time
+    // Eager initialization: instance created at class loading time
     // private static final DBConn INSTANCE_EAGER = new DBConn();
 
-
-
     /**
-     * A2.
-     * Lazy Initialized Singleton
-     * Not suitable for multi-threaded environment
-     * @return
+     * Returns the Singleton instance using lazy initialization.
+     * Creates instance only when needed. Not thread-safe.
+     * This is an instance getter, not a setter.
+     * @return Singleton instance
      */
     public static DBConn createInstanceSingleThreaded(){
         if(INSTANCE == null){
@@ -57,10 +42,10 @@ public class DBConn {
     }
 
     /**
-     * A3.
-     * Synchronized method
-     * Suitable for single-threaded environment
-     * @return
+     * Returns the Singleton instance using synchronized method.
+     * Thread-safe: ensures only one thread can create the instance at a time.
+     * This is an instance getter, not a setter.
+     * @return Singleton instance
      */
     public synchronized static DBConn createInstanceUsingLazyLoading(){
         if(INSTANCE == null){
@@ -69,12 +54,11 @@ public class DBConn {
         return INSTANCE;
     }
 
-
     /**
-     * A.4
-     * Double checked locking
-     * Best approach for multi-threaded environment
-     * @return
+     * Returns the Singleton instance using double-checked locking.
+     * Thread-safe and efficient: locks only when instance is null.
+     * This is an instance getter, not a setter.
+     * @return Singleton instance
      */
     public static DBConn createInstanceMultiThreaded(){
         if(INSTANCE == null){
@@ -91,9 +75,10 @@ public class DBConn {
     }
 
     /**
-     * A5.
-     * Lock using synchronized block
-     * Best approach for multi-threaded environment
+     * Returns the Singleton instance using a synchronized block.
+     * Thread-safe: uses class-level lock to ensure only one thread creates the instance.
+     * This is an instance getter, not a setter.
+     * @return Singleton instance
      */
     public static DBConn createInstanceUsingSynchronizedBlock() {
         if (INSTANCE == null) {
@@ -106,10 +91,6 @@ public class DBConn {
         return INSTANCE;
     }
 
-/**
- * A4 and A5 are similar, both are suitable for multi-threaded environment
- *
- **/
-
+    // Both double-checked locking and synchronized block approaches are suitable for multi-threaded environments.
 
 }
