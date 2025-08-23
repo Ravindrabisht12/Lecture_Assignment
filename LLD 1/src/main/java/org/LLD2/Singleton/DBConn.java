@@ -29,12 +29,12 @@ public class DBConn {
     // private static final DBConn INSTANCE_EAGER = new DBConn();
 
     /**
-     * Returns the Singleton instance using lazy initialization.
-     * Creates instance only when needed. Not thread-safe.
-     * This is an instance getter, not a setter.
+     * Lazy initialization:
+     * Returns the Singleton instance using lazy initialization (single-threaded).
+     * Not thread-safe. This is an instance getter, not a setter.
      * @return Singleton instance
      */
-    public static DBConn createInstanceSingleThreaded(){
+    public static DBConn getInstanceSingleThreaded(){
         if(INSTANCE == null){
             INSTANCE = new DBConn();
         }
@@ -42,12 +42,13 @@ public class DBConn {
     }
 
     /**
+     * Synchronized method:
      * Returns the Singleton instance using synchronized method.
      * Thread-safe: ensures only one thread can create the instance at a time.
      * This is an instance getter, not a setter.
      * @return Singleton instance
      */
-    public synchronized static DBConn createInstanceUsingLazyLoading(){
+    public synchronized static DBConn getInstanceSynchronized(){
         if(INSTANCE == null){
             INSTANCE = new DBConn();
         }
@@ -55,12 +56,13 @@ public class DBConn {
     }
 
     /**
+     * Double-checked locking:
      * Returns the Singleton instance using double-checked locking.
      * Thread-safe and efficient: locks only when instance is null.
      * This is an instance getter, not a setter.
      * @return Singleton instance
      */
-    public static DBConn createInstanceMultiThreaded(){
+    public static DBConn getInstanceMultiThreaded(){
         if(INSTANCE == null){
             lock.lock();
             try {
@@ -75,12 +77,14 @@ public class DBConn {
     }
 
     /**
+     * Synchronized block:
+     * -  For better performance in multi-threaded environments.
      * Returns the Singleton instance using a synchronized block.
      * Thread-safe: uses class-level lock to ensure only one thread creates the instance.
      * This is an instance getter, not a setter.
      * @return Singleton instance
      */
-    public static DBConn createInstanceUsingSynchronizedBlock() {
+    public static DBConn getInstanceSynchronizedBlock() {
         if (INSTANCE == null) {
             synchronized (DBConn.class) {
                 if (INSTANCE == null) {
