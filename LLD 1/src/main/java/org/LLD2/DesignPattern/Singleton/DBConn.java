@@ -1,4 +1,4 @@
-package org.LLD2.Singleton;
+package org.LLD2.DesignPattern.Singleton;
 
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;

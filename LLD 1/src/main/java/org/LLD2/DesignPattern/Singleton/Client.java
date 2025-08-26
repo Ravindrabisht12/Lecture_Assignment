@@ -1,4 +1,4 @@
-package org.LLD2.Singleton;
+package org.LLD2.DesignPattern.Singleton;
 
 public class Client {
     public static void main(String[] args) {
