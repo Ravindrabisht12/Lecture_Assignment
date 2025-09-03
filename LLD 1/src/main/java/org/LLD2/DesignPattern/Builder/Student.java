@@ -57,6 +57,15 @@ public class Student {
 
     /**
      * Static inner Builder class for Student
+     *
+     * The 'static' keyword here means:
+     * 1. This inner class doesn't need an instance of the outer Student class to exist
+     * 2. It can be instantiated directly without a Student object: Student.Builder builder = new Student.Builder();
+     * 3. It doesn't have access to instance variables/methods of the outer Student class
+     * 4. It helps prevent memory leaks since it doesn't hold an implicit reference to the outer class
+     * 5. This is the recommended approach for Builder pattern implementation
+     *    as it allows the Student constructor to be private while still allowing
+     *    client code to create Student objects through the Builder
      */
     public static class Builder {
         private String name;
