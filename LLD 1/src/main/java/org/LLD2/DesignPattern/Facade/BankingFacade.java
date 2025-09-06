@@ -1,8 +1,8 @@
 package org.LLD2.DesignPattern.Facade;
 
-import org.LLD2.DesignPattern.Facade.Services.AccountService;
-import org.LLD2.DesignPattern.Facade.Services.LoanService;
-import org.LLD2.DesignPattern.Facade.Services.NotificationService;
+import org.LLD2.DesignPattern.Facade.AccountService;
+import org.LLD2.DesignPattern.Facade.LoanService;
+import org.LLD2.DesignPattern.Facade.NotificationService;
 
 /**
  * Facade Design Pattern Example - Learning Guide
